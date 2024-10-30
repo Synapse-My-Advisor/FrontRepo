@@ -1,1 +1,36 @@
-<p>login works!</p>
+<body>
+
+    <div class="container" #container>
+        <div class="form-container sign-up">
+            <form>
+                <h1>Cadastro</h1>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button>Inscreva-se</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Login</h1>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <a href="#">Esqueceu sua senha?</a>
+                <button>Entrar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <img src="assets/img/logosombra.png" alt="logo">
+                    <button class="hidden" (click)="activateLogin()">Login</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <img src="assets/img/logosombra.png" alt="logo">
+                    <button class="hidden" (click)="activateRegister()">Cadastro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
