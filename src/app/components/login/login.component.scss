@@ -192,3 +192,13 @@ body {
 .container.active .toggle-right {
     transform: translateX(200%);
 }
+
+img {
+    max-width: 70%;
+    width: max(250px, 50vw); 
+  
+    @media (max-width: 480px) {
+      width: 100%; 
+      max-width: 150px; 
+    }
+  }
