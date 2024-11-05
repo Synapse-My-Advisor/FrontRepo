@@ -1,38 +1,40 @@
 <body>
     <div class="container" [class.active]="isRegisterMode">
-    <div class="form-container sign-up">
-        <form>
-            <h1>Cadastro</h1>
-            <input type="text" placeholder="Nome" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Senha" required />
-            <button type="button">Inscreva-se</button>
-        </form>
-    </div>
-    <div class="form-container sign-in">
-        <form>
-            <h1>Login</h1>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Senha" required />
-            <a href="#">Esqueceu sua senha?</a>
-            <button type="button">Entrar</button>
-        </form>
-    </div>
-    <div class="toggle-container">
-        <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <div class="img">
-                    <img src="assets/logosombra.png" alt="logo">
+        <div class="form-container sign-up">
+            <form (ngSubmit)="createUser()">
+                <h1>Cadastro</h1>
+                <input type="text" id="nome" [(ngModel)]="nome" name="nome" placeholder="Nome" required />
+                <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                <input type="password" id="passwd" [(ngModel)]="passwd" name="passwd" placeholder="Senha" required />
+                <button type="submit">Inscreva-se</button>
+            </form>
+            <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        </div>
+        <div class="form-container sign-in">
+            <form (ngSubmit)="login()">
+                <h1>Login</h1>
+                <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                <input type="password" id="passwd" [(ngModel)]="passwd" name="passwd" placeholder="Senha" required />
+                <a href="#">Esqueceu sua senha?</a>
+                <button type="submit">Entrar</button>
+            </form>
+            <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <div class="img">
+                        <img src="assets/logosombra.png" alt="logo">
+                    </div>
+                    <button class="hidden" (click)="toggleMode(false)">Login</button>
                 </div>
-                <button class="hidden" (click)="toggleMode(false)">Login</button>
-            </div>
-            <div class="toggle-panel toggle-right">
-                <div class="img">
-                    <img src="assets/logosombra.png" alt="logo">
+                <div class="toggle-panel toggle-right">
+                    <div class="img">
+                        <img src="assets/logosombra.png" alt="logo">
+                    </div>
+                    <button class="hidden" (click)="toggleMode(true)">Cadastro</button>
                 </div>
-                <button class="hidden" (click)="toggleMode(true)">Cadastro</button>
             </div>
         </div>
     </div>
-</div>
 </body>
