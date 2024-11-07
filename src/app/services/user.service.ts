@@ -16,19 +16,20 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:4200'; // URL da API
+  private apiUrl = 'http://localhost:3000'; // URL da API
 
   constructor(private http: HttpClient) {}
 
   // Função para verificar login (exemplo de autenticação básica)
   login(email: string, passwd: string): Observable<User> {
-    const url = `${this.apiUrl}/login`;
+    const url = `${this.apiUrl}/usuarios`;
     return this.http.post<User>(url, { email, passwd });
   }
 
   // Criar usuário
   createUser(nome: string, email: string, passwd: string): Observable<User> {
-    return this.http.post<User>(this.apiUrl, { nome, email, passwd });
+    const url = `${this.apiUrl}/usuarios`;
+    return this.http.post<User>(url, { nome, email, passwd });
   }
 
   // Obter todos os usuários

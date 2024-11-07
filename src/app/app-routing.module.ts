@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redireciona para login por padrão
   // { path: '**', redirectTo: '/login' }, // Rota para 404 ou redirecionamento
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+
 ];
 
 @NgModule({

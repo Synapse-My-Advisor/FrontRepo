@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   [x: string]: any;
   isRegisterMode: boolean = false;
@@ -54,6 +55,12 @@ export class LoginComponent {
     );
   }
 
+  abertoLog:boolean = true;
+  abertoReg:boolean = true;
+  mostrarSenha() {
+    this.abertoLog = !this.abertoLog;
+    this.abertoReg = !this.abertoReg;
+  }
 
 }
 
