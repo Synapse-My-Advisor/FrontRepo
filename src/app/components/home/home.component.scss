@@ -10,7 +10,7 @@ $chat-box-color: #ecdfcc;
 }
 
 .container {
-    height: 92vh;
+    height: 85vh;
     background-color: $secondary-color;
 }
 
@@ -44,6 +44,11 @@ $chat-box-color: #ecdfcc;
   h2 {
     margin: 0;
     font-size: 20px;
+    color: $tertiary-color;
+  }
+
+  p {
+    color: $tertiary-color;
   }
 
   .chat-box {
@@ -111,15 +116,6 @@ $chat-box-color: #ecdfcc;
   }
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: $primary-color;
-  padding: 25px;
-}
-
 @media (max-width: 768px) {
   header {
     .header-links {
@@ -137,6 +133,7 @@ footer {
 
     .sidebar {
       display: none;
+      height: 80%;
     }
 
     .main-content {
