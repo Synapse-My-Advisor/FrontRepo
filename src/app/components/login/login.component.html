@@ -1,4 +1,4 @@
-<body>
+<div class="body">
     <div class="container" [class.active]="isRegisterMode">
         <div class="form-container sign-up">
             <form (ngSubmit)="createUser()">
@@ -6,7 +6,8 @@
                 <input type="text" id="nome" [(ngModel)]="nome" name="nome" placeholder="Nome" required />
                 <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
                 <div class="input-box">
-                    <input [type]="abertoReg? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd" placeholder="Senha" required />
+                    <input [type]="abertoReg? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd"
+                        placeholder="Senha" required />
                     <img (click)="mostrarSenha()" [src]="abertoReg?'assets/aberto.png': 'assets/fechado.png'" alt="">
                 </div>
                 <button type="submit">Inscreva-se</button>
@@ -18,10 +19,11 @@
                 <h1 style="color: #6E605B;">Login</h1>
                 <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
                 <div class="input-box">
-                    <input [type]="abertoLog? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd" placeholder="Senha" required />
+                    <input [type]="abertoLog? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd"
+                        placeholder="Senha" required />
                     <img (click)="mostrarSenha()" [src]="abertoLog?'assets/aberto.png': 'assets/fechado.png'" alt="">
                 </div>
-                    <a href="#">Esqueceu sua senha?</a>
+                <a href="#">Esqueceu sua senha?</a>
                 <button type="submit">Entrar</button>
             </form>
             <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
@@ -44,4 +46,4 @@
             </div>
         </div>
     </div>
-</body>
+</div>
