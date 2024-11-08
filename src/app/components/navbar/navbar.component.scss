@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap");
+
+$primary-color: #a5b68d;
+$secondary-color: #fcfaee;
+$tertiary-color: #6E605B;
+$chat-box-color: #ecdfcc;
+$font-main: "Poppins", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-main;
+  list-style: none;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  background-color: $primary-color;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 100px;
+  }
+
+  .header-links {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $secondary-color;
+      font-weight: 500;
+    }
+
+    ul {
+      display: flex;
+      font-size: 14px;
+      color: $secondary-color;
+
+      li {
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  width: 15%;
+  background-color: $primary-color;
+  padding: 15px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  margin-top: 45px;
+
+  a {
+    color: $secondary-color;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+.main-content {
+  width: 80%;
+  padding: 40px;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .chat-box {
+    background-color: $chat-box-color;
+    padding: 30px;
+    margin: 20px 0px;
+    font-size: 18px;
+    text-align: center;
+    height: 200px;
+    position: relative;
+    top: 10px;
+    border-radius: 12px;
+  }
+
+  .input-area {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 20px;
+  }
+
+  .input-area input {
+    width: 100%;
+    padding: 12px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .input-area button {
+    position: absolute;
+    color: #6E605B;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .input-area .left-btn {
+    left: 10px;
+  }
+
+  .input-area .right-btn {
+    right: 10px;
+  }
+
+  .input-area .left-btn i,
+  .input-area .right-btn i {
+    font-size: 18px;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $primary-color;
+  padding: 25px;
+}
+
+@media (max-width: 768px) {
+  header {
+    .header-links {
+      flex-direction: column;
+      align-items: flex-start;
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .content {
+    flex-direction: column;
+
+    .sidebar {
+      display: none;
+    }
+
+    .main-content {
+      width: 100%;
+      padding: 10px;
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .chat-box {
+        font-size: 16px;
+      }
+
+      .input-area {
+        input {
+          width: 80%;
+        }
+
+        button {
+          width: 20%;
+        }
+      }
+    }
+  }
+}
