@@ -1,49 +1,49 @@
-<div class="body">
-    <div class="container" [class.active]="isRegisterMode">
-        <div class="form-container sign-up">
-            <form (ngSubmit)="createUser()">
-                <h1 style="color: #6E605B;">Cadastro</h1>
-                <input type="text" id="nome" [(ngModel)]="nome" name="nome" placeholder="Nome" required />
-                <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
-                <div class="input-box">
-                    <input [type]="abertoReg? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd"
-                        placeholder="Senha" required />
-                    <img (click)="mostrarSenha()" [src]="abertoReg?'assets/aberto.png': 'assets/fechado.png'" alt="">
-                </div>
-                <button type="submit">Inscreva-se</button>
-            </form>
-            <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
-        </div>
-        <div class="form-container sign-in">
-            <form (ngSubmit)="login()">
-                <h1 style="color: #6E605B;">Login</h1>
-                <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
-                <div class="input-box">
-                    <input [type]="abertoLog? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd"
-                        placeholder="Senha" required />
-                    <img (click)="mostrarSenha()" [src]="abertoLog?'assets/aberto.png': 'assets/fechado.png'" alt="">
-                </div>
-                <a href="#">Esqueceu sua senha?</a>
-                <button type="submit">Entrar</button>
-            </form>
-            <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <div class="img">
-                        <img src="assets/logosombra.png" alt="logo">
-                        <button class="hidden" (click)="toggleMode(false)">Login</button>
+    <div class="body">
+        <div class="container" [class.active]="isRegisterMode">
+            <div class="form-container sign-up">
+                <form (ngSubmit)="newUser()" [formGroup]="form"> 
+                    <h1 style="color: #6E605B;">Cadastro</h1>
+                    <input type="text" id="nome" formControlName="name" name="nome" placeholder="Nome"/>
+                    <input type="email" id="email" formControlName="email" name="email" placeholder="Email" />
+                    <div class="input-box">
+                        <input [type]="abertoReg? 'password':'text'" id="passwd" formControlName="passwd" name="passwd"
+                            placeholder="Senha"/>
+                        <img (click)="mostrarSenha()" [src]="abertoReg?'assets/aberto.png': 'assets/fechado.png'" alt="">
                     </div>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <div class="img">
-                        <img src="assets/logosombra.png" alt="logo">
-                        <h2>Bem-vindo!</h2>
-                        <button class="hidden" (click)="toggleMode(true)">Cadastro</button>
+                    <button type="submit">Inscreva-se</button>
+                </form>
+                <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+            </div>
+            <div class="form-container sign-in">
+                <form (ngSubmit)="login()">
+                    <h1 style="color: #6E605B;">Login</h1>
+                    <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                    <div class="input-box">
+                        <input [type]="abertoLog? 'password':'text'" id="passwd" [(ngModel)]="passwd" name="passwd"
+                            placeholder="Senha" required />
+                        <img (click)="mostrarSenha()" [src]="abertoLog?'assets/aberto.png': 'assets/fechado.png'" alt="">
+                    </div>
+                    <a href="#">Esqueceu sua senha?</a>
+                    <button type="submit">Entrar</button>
+                </form>
+                <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <div class="img">
+                            <img src="assets/logosombra.png" alt="logo">
+                            <button class="hidden" (click)="toggleMode(false)">Login</button>
+                        </div>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <div class="img">
+                            <img src="assets/logosombra.png" alt="logo">
+                            <h2>Bem-vindo!</h2>
+                            <button class="hidden" (click)="toggleMode(true)">Cadastro</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
