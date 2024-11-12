@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NewUser, NewUserResult } from '../models/users';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +16,8 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
-  register(name: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuarios`, { name, email, password });
+  register(body: NewUser): Observable<NewUserResult> {
+    return this.http.post<NewUserResult>(environment.API_URL + '/usuarios', body);
   }
 
   setToken(token: string): void {

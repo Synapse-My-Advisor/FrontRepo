@@ -16,7 +16,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000'; // URL da API
+  private apiUrl = 'http://localhost:3000'; // URL da API (5000?)
 
   constructor(private http: HttpClient) {}
 

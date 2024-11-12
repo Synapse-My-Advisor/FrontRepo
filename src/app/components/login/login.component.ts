@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { VariableBinding } from '@angular/compiler';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  form!: FormGroup
+
   [x: string]: any;
   isRegisterMode: boolean = false;
 
@@ -21,7 +26,15 @@ export class LoginComponent {
   passwd: string = '';
   errorMessage: string = '404';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      passwd: ['', Validators.required]
+    })
+  }
 
   // Método para autenticar o usuário
   login(): void {
@@ -42,21 +55,42 @@ export class LoginComponent {
   // Método para cadastrar o usuário
   createUser(): void {
     this.userService.createUser(this.nome, this.email, this.passwd).subscribe(
-      (user) => {
+      (response) => {
         // Cadastro bem-sucedido, redireciona para a página principal (ou outra rota)
-        console.log('Cadastro bem-sucedido', user);
+        console.log('Cadastro bem-sucedido', response);
         this.router.navigate(['/dashboard']);
       },
       (error) => {
         // Cadastro falhou
-        this.errorMessage = 'Email ou senha incorretos';
+        this.errorMessage = error.error?.message || 'Erro ao cadastrar usuário';
         console.error(error);
       }
     );
   }
 
-  abertoLog:boolean = true;
-  abertoReg:boolean = true;
+  newUser() {
+    const formValue = {
+      nome: this.form.get('name')!.value,
+      email: this.form.get('email')!.value,
+      passwd: this.form.get('passwd')!.value,
+      cargo: 'aluno'
+    }
+
+    if (this.form!.valid) {
+      this.authService.register(formValue).subscribe(
+        (post) => {
+          console.log(post)
+          this.router.navigate(['/home'])
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
+  }
+
+  abertoLog: boolean = true;
+  abertoReg: boolean = true;
   mostrarSenha() {
     this.abertoLog = !this.abertoLog;
     this.abertoReg = !this.abertoReg;
