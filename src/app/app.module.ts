@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdvisorComponent } from './components/advisor/advisor.component';
 import { HomeComponent } from './components/home/home.component';
+import { HomeadmComponent } from './components/homeadm/homeadm.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     NavbarComponent,
     AdvisorComponent,
-    HomeComponent
+    HomeComponent,
+    HomeadmComponent
   ],
   imports: [
     BrowserModule,
